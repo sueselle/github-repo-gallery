@@ -107,8 +107,8 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: orange;
-    color: black;
+    background: linear-gradient(to top, #b58aae, #483978);
+    color: white;
     font-size: 18px;
     padding-bottom: 2em;
     padding-top: 1em;

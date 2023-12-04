@@ -107,10 +107,11 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #483978;
-    color: white;
+    background-color: orange;
+    color: black;
     font-size: 18px;
     padding-bottom: 2em;
+    padding-top: 1em;
 }
 
 .user-info figure {

@@ -107,7 +107,7 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background: linear-gradient(to top, #b58aae, #483978);
+    background: linear-gradient(to top, deeppink, #483978);
     color: white;
     font-size: 18px;
     padding-bottom: 2em;

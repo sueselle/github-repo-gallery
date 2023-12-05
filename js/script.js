@@ -4,6 +4,9 @@ const username = "sueselle";
 const repoList = document.querySelector(".repo-list");
 const allRepos = document.querySelector(".repos");
 const repoData = document.querySelector(".repo-data");
+const repoReturnButton = document.querySelector(".view-repos");
+const filterInput = document.querySelector(".filter-repos");
+
 
 const gitUserInfo = async function() {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
@@ -25,7 +28,7 @@ const displayUserInfo = function (data) {
     <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
   </div> `;
   overview.append(div);
-  gitRepos();
+  gitRepos(username);
 };
 
 const gitRepos = async function () {
@@ -35,6 +38,7 @@ const gitRepos = async function () {
 };
 
 const displayRepos = function (repos) {
+    filterInput.classList.remove("hide");
     for (const repo of repos) {
     const repoItem = document.createElement("li");
     repoItem.classList.add("repo");
@@ -67,6 +71,7 @@ const getRepoInfo = async function (repoName) {
 };
 
 const displayRepoInfo = function (repoInfo, languages) {
+    repoReturnButton.classList.remove("hide");
     repoData.innerHTML = "";
     repoData.classList.remove("hide");
     allRepos.classList.add("hide");
@@ -80,3 +85,26 @@ const displayRepoInfo = function (repoInfo, languages) {
   `;
   repoData.append(div);
 };
+
+repoReturnButton.addEventListener("click", function () {
+    allRepos.classList.remove("hide");
+    repoData.classList.add("hide");
+    repoReturnButton.classList.add("hide");
+});
+
+filterInput.addEventListener("input", function(e) {
+    const searchText = e.target.value;
+    const repos = document.querySelectorAll(".repo");
+    const searchLowerText = searchText.toLowerCase();
+
+    for (const repo of repos) {
+        const repoLowerText = repo.innerText.toLowerCase();
+        if (repoLowerText.includes(searchLowerText)) {
+            repo.classList.remove("hide");
+        }
+        else {
+            repo.classList.add("hide");
+        }
+    }
+        });
+  
